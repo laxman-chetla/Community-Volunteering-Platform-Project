@@ -1,0 +1,86 @@
+`Query:
+CREATE DATABASE Community_volunteering_platform;
+-- USERS TABLE
+CREATE TABLE Users (
+    UserID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Email VARCHAR(255) UNIQUE NOT NULL,
+    Phone VARCHAR(15),
+    PasswordHash VARCHAR(255) NOT NULL,
+    Role ENUM('Volunteer', 'Organization') NOT NULL,
+    EmailVerified BOOLEAN DEFAULT FALSE,
+    SkillsSummary TEXT,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- PASSWORD RESET REQUESTS TABLE
+CREATE TABLE PasswordResetRequests (
+    RequestID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT,
+    Token VARCHAR(255),
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+
+-- TASKS TABLE
+CREATE TABLE Tasks (
+    TaskID INT AUTO_INCREMENT PRIMARY KEY,
+    OrganizationID INT,
+    Title VARCHAR(255) NOT NULL,
+    Description TEXT NOT NULL,
+    Location VARCHAR(255),
+    SkillsRequired VARCHAR(255),
+    TaskDate DATE,
+    TaskTime TIME,
+    Status ENUM('Available', 'Taken', 'Completed') DEFAULT 'Available',
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (OrganizationID) REFERENCES Users(UserID)
+);
+-- TASK SIGNUPS TABLE
+CREATE TABLE TaskSignups (
+    SignupID INT AUTO_INCREMENT PRIMARY KEY,
+    TaskID INT,
+    VolunteerID INT,
+    SignupDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Status ENUM('Upcoming', 'Ongoing', 'Completed', 'Cancelled') DEFAULT 'Upcoming',
+    FOREIGN KEY (TaskID) REFERENCES Tasks(TaskID),
+    FOREIGN KEY (VolunteerID) REFERENCES Users(UserID)
+);
+
+-- SKILLS TABLE (COMBINED WITH CATEGORIES)
+CREATE TABLE Skills (
+    SkillID INT AUTO_INCREMENT PRIMARY KEY,
+    SkillName VARCHAR(100) NOT NULL UNIQUE,
+    CategoryName VARCHAR(100) NOT NULL, -- Directly store category name
+    Description TEXT, -- Optional: Brief description of the skill
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- USER SKILLS TABLE
+CREATE TABLE UserSkills (
+    UserSkillID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT NOT NULL,
+    SkillID INT NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (SkillID) REFERENCES Skills(SkillID)
+);
+
+-- RATINGS TABLE
+CREATE TABLE Ratings (
+    RatingID INT AUTO_INCREMENT PRIMARY KEY,
+    RatedBy INT NOT NULL,
+    RatedUser INT NOT NULL,
+    TaskID INT,
+    RatingValue INT CHECK (RatingValue BETWEEN 1 AND 5),
+    Review TEXT,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (RatedBy) REFERENCES Users(UserID),
+    FOREIGN KEY (RatedUser) REFERENCES Users(UserID),
+    FOREIGN KEY (TaskID) REFERENCES Tasks(TaskID) ON DELETE SET NULL
+);
+
+
