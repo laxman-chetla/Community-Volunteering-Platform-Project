@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create/Update Task</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 30px;
+            margin: auto;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        .btn {
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Create or Edit Task</h2>
+    <form th:action="@{/tasks/save}" th:object="${task}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <label>Title</label>
+        <input type="text" th:field="*{title}" required />
+
+        <label>Description</label>
+        <textarea th:field="*{description}" required></textarea>
+
+        <label>Location</label>
+        <input type="text" th:field="*{location}" required />
+
+        <label>Skills</label>
+        <input type="text" th:field="*{skills}" required />
+
+        <label>Date</label>
+        <input type="date" th:field="*{date}" required />
+
+        <label>Time</label>
+        <input type="text" th:field="*{time}" required />
+
+        <button type="submit" class="btn">Save Task</button>
+    </form>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search and Filter Tasks</title>
+</head>
+<body>
+<h2>Search and Filter Tasks</h2>
+<form th:action="@{/tasks/search-filter}" method="post">
+    <input type="text" name="keyword" placeholder="Search by Title" />
+    <input type="text" name="skill" placeholder="Filter by Skill" />
+    <input type="text" name="location" placeholder="Filter by Location" />
+    <input type="date" name="date" placeholder="Filter by Date" />
+    <button type="submit">Apply</button>
+</form>
+
+<table border="1">
+    <tr>
+        <th>Title</th><th>Description</th><th>Location</th><th>Skills</th><th>Date</th><th>Time</th>
+    </tr>
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.title}"></td>
+        <td th:text="${task.description}"></td>
+        <td th:text="${task.location}"></td>
+        <td th:text="${task.skills}"></td>
+        <td th:text="${task.date}"></td>
+        <td th:text="${task.time}"></td>
+    </tr>
+</table>
+</body>
+</html>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Task Form</title>
+</head>
+<body>
+<h2>Create or Edit Task</h2>
+<form th:action="@{/tasks/save}" th:object="${task}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <label>Title:</label><input type="text" th:field="*{title}" required /><br/>
+    <label>Description:</label><input type="text" th:field="*{description}" required /><br/>
+    <label>Location:</label><input type="text" th:field="*{location}" required /><br/>
+    <label>Skills:</label><input type="text" th:field="*{skills}" required /><br/>
+    <label>Date:</label><input type="date" th:field="*{date}" required /><br/>
+    <label>Time:</label><input type="text" th:field="*{time}" required /><br/>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
+-->

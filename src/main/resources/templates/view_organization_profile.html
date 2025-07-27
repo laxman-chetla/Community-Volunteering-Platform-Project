@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Organization Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e8f0fe;
+            padding: 20px;
+        }
+        .profile-card {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            margin: 10px 0;
+            color: #555;
+        }
+        .btn {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .success {
+            color: green;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+
+
+</head>
+<body>
+<h2>Your Organization Profile</h2>
+
+<div th:if="${success}">
+    <p style="color:green;">Profile updated successfully!</p>
+</div>
+
+<p><strong>GST Number:</strong> <span th:text="${profile.gstNumber}"></span></p>
+<p><strong>Location:</strong> <span th:text="${profile.location}"></span></p>
+<p><strong>Website:</strong> <span th:text="${profile.website}"></span></p>
+
+<a href="/profile" class="btn">Edit Profile</a>
+</body>
+</html>

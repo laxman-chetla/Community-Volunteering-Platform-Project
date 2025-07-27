@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <title>Community Volunteering</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: purple;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.get-involved-btn {
+    background-color: purple;
+    color: white !important;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.hero {
+    background: url('/images/hero.jpg') no-repeat center center/cover;
+    padding: 100px 50px;
+    color: black;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.hero-content span {
+    color: #e0c6ff;
+}
+
+.hero-content p {
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+.hero-buttons .btn {
+    background-color: purple;
+    color: white;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn.secondary {
+    background-color: white;
+    color: purple;
+    border: 1px solid purple;
+}
+
+.opportunities {
+    text-align: center;
+    padding: 60px 30px;
+}
+
+.btn-purple {
+    background-color: purple;
+    color: white;
+    padding: 10px 20px;
+    margin: 20px auto;
+    display: inline-block;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.opportunity-types {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.opportunity-types div {
+    max-width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+footer {
+    background-color: #f0f0f0;
+    padding: 40px 50px;
+    margin-top: 40px;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-columns .column {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-columns h4 {
+    margin-bottom: 10px;
+    color: purple;
+}
+
+.footer-columns a {
+    text-decoration: none;
+    color: #444;
+    display: block;
+    margin: 4px 0;
+}
+
+.footer-columns form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-columns input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.footer-links {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: purple;
+    margin: 0 10px;
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Community <span>Volunteering</span></div>
+    <nav>
+        <ul>
+          <!--  <li><a th:href="@{/}" target="_blank">Home</a></li>
+            <li><a th:href="@{/register}" target="_blank">User Registration</a></li>  -->
+            <li><a th:href="@{/tasks}" target="_blank">Volunteer Opportunities</a></li>
+            <li><a th:href="@{/tasks/search-filter}" target="_blank">Search & Filter</a></li>
+            <li><a th:href="@{/signup/register}" target="_blank">SignUp</a></li>
+            <li><a th:href="@{/ratings/new}" target="_blank">Rate A Volunteer</a></li>
+            <li><a th:href="@{/signup/register}" class="get-involved-btn" target="_blank">Get Involved</a></li>
+            <li><a th:href="@{/profile}" class="get-involved-btn" target="_blank">Profile</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Hero Section with Your Image -->
+
+<section class="hero">
+    <div class="hero-text" style="text-color:black" >
+        <h1>Join Our <span>Community</span> of Volunteers</h1>
+        <p >Welcome to Community Volunteering! We connect passionate individuals with meaningful opportunities to make a difference. Explore how you can contribute and be a part of our mission to create positive change.</p>
+    </div>
+    <div class="hero-bg">
+        <img src="/images/volunteer-image.png" alt="Volunteer Image" class="hero-img" width="70%" height="auto" >
+    </div>
+    <div class="hero-text">
+
+        <div class="hero-buttons">
+            <a th:href="@{/signup/register}" target="_blank" class="btn">Get Involved</a>
+            <a th:href="@{/learn-more}" target="_blank" class="btn secondary">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<!-- Expanded Info Section -->
+<section class="opportunities">
+    <h2>Explore Our Diverse Volunteer Opportunities</h2>
+    <p>
+        Join us in making a difference in your community. Our platform offers a wide range of volunteer tasks tailored to match your interests and skills. Whether you’re passionate about helping others, building your career experience, or simply giving back, there’s a place for you here.
+    </p>
+    <a th:href="@{/tasks}" target="_blank" class="btn-purple">View All Opportunities</a>
+
+    <div class="opportunity-types">
+        <div>
+            <h3>Community Service</h3>
+            <p>Engage in meaningful tasks that benefit local communities and foster social responsibility. From tree planting to food drives, your time can create real change.</p>
+        </div>
+        <div>
+            <h3>Skill-Based Volunteering</h3>
+            <p>Use your unique skills to support nonprofit organizations in need — such as graphic design, teaching, writing, or technical support — and gain valuable experience.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-columns">
+        <div class="column">
+            <h4>Get Involved</h4>
+            <a th:href="@{/tasks}" target="_blank">Volunteer Opportunities</a><br>
+            <a th:href="@{/tasks/new}" target="_blank">Register</a>
+        </div>
+        <div class="column">
+            <h4>Grab a Task</h4>
+            <a th:href="@{/signup/register}" target="_blank">SignUp</a>
+        </div>
+        <div class="column">
+            <h4>Support Us</h4>
+            <a th:href="@{/ratings/new}" target="_blank">Rate your Volunteer</a>
+        </div>
+        <div class="column">
+            <h4>Stay Updated</h4>
+            <form>
+                <input type="email" placeholder="Enter your email">
+                <button type="submit" class="btn-purple">Subscribe</button>
+            </form>
+        </div>
+    </div>
+    <p class="footer-bottom">
+        Community Volunteering is dedicated to connecting volunteers with meaningful opportunities to make a difference. Join us in our mission to support and uplift communities through dedicated service and collaboration.
+    </p>
+    <div class="footer-links">
+        <a href="#">Terms Of Service</a> | <a href="#">Privacy Policy</a>
+    </div>
+    <li><a th:href="@{/logout}" class="btn btn-danger" >Logout</a></li>
+    <li><a th:href="@{/delete-account}" class="btn btn-danger">Delete Account</a></li>
+</footer>
+
+</body>
+</html>

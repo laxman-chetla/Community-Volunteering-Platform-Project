@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Available Volunteer Tasks</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f8fb;
+        padding: 20px;
+    }
+    h2 {
+        text-align: center;
+        color: #2c3e50;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+    }
+    th {
+        background: #3498db;
+        color: white;
+    }
+    tr:hover {
+        background: #f1f1f1;
+    }
+    .btn {
+        padding: 6px 12px;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        cursor: pointer;
+    }
+    .btn-edit {
+        background: #2ecc71;
+    }
+    .btn-delete {
+        background: #e74c3c;
+    }
+    .btn-register {
+        background: #f39c12;
+    }
+    .btn-disabled {
+        background: gray;
+        cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+<h2>Available Volunteer Tasks</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Location</th>
+    <th>Skills</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <div th:insert="fragments/header :: header"></div>
+
+  <tr th:each="task : ${tasks}">
+    <td th:text="${task.title}"></td>
+    <td th:text="${task.description}"></td>
+    <td th:text="${task.location}"></td>
+    <td th:text="${task.skills}"></td>
+    <td th:text="${task.date}"></td>
+    <td th:text="${task.time}"></td>
+    <td th:text="${task.taken} ? 'Taken' : 'Available'"></td>
+    <td>
+      <a th:if="${!task.taken}"
+         th:href="@{'/signup/' + ${task.id}}"
+         class="btn btn-register">Register</a>
+
+      <button th:if="${task.taken}" class="btn btn-disabled" disabled>Taken</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

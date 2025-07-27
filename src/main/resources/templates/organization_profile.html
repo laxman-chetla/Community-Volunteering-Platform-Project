@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Organization Profile</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Edit Volunteer Profile</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background: #f4f4f9;
+                padding: 20px;
+            }
+            .container {
+                background: white;
+                max-width: 500px;
+                margin: auto;
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            }
+            h2 {
+                text-align: center;
+                color: #333;
+            }
+            label {
+                display: block;
+                margin-top: 10px;
+                color: #444;
+            }
+            input {
+                width: 100%;
+                padding: 10px;
+                margin-top: 5px;
+                border-radius: 6px;
+                border: 1px solid #ccc;
+            }
+            button {
+                margin-top: 20px;
+                padding: 10px 20px;
+                width: 100%;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </head>
+
+    <body>
+    <h2>Organization Profile</h2>
+    <form th:action="@{/save-organization-profile}" th:object="${profile}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <label>GST Number:</label><input type="text" th:field="*{gstNumber}" /><br/>
+        <label>Location:</label><input type="text" th:field="*{location}" /><br/>
+        <label>Website:</label><input type="text" th:field="*{website}" /><br/>
+        <button type="submit">Save / Update</button>
+    </form>
+    </body>
+    </html>

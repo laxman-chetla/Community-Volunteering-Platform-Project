@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eaf4f8;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #34495e;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            text-align: center;
+        }
+        th {
+            background: #2980b9;
+            color: white;
+        }
+        tr:hover {
+            background: #f9f9f9;
+        }
+        .btn-cancel {
+            background: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+         .edit-btn {
+    background-color: orange;
+    border-radius: 6px;
+    color: white;
+    padding: 6px 14px;
+    border: none;
+    cursor: pointer;
+}
+.delete-btn {
+    background-color: red;
+    border-radius: 6px;
+    color: white;
+    padding: 6px 14px;
+    border: none;
+    cursor: pointer;
+}
+.insert-btn {
+    background-color: #007bff;
+    border-radius: 6px;
+    color: white;
+    padding: 6px 14px;
+    border: none;
+    cursor: pointer;
+}
+}
+    </style>
+</head>
+<body>
+<a href="/tasks/new" class="btn insert-btn">Create New Task</a>
+<h2>Volunteer Tasks</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>description</th>
+        <th>Location</th>
+        <th>Skills</th>
+        <th>Date</th>
+        <th>Time</th>
+
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.title}"></td>
+        <td th:text="${task.description}"></td>
+        <td th:text="${task.location}"></td>
+        <td th:text="${task.skills}"></td>
+        <td th:text="${task.date}"></td>
+        <td th:text="${task.time}"></td>
+
+        <td>
+            <a th:href="@{'/tasks/edit/' + ${task.id}}" class="btn edit-btn">Edit</a>
+            <a th:href="@{'/tasks/delete/' + ${task.id}}" class="btn delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+        </td>
+       <!-- <td>
+            <a th:href="@{'/signup/cancel/' + ${task.id}}" class="btn-cancel"
+               onclick="return confirm('Are you sure you want to cancel this signup?');">Cancel</a>
+        </td>-->
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Task List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f8fb;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background: #3498db;
+            color: white;
+        }
+        tr:hover {
+            background: #f1f1f1;
+        }
+        .btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+        }
+        .btn-edit {
+            background: #2ecc71;
+        }
+        .btn-delete {
+            background: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+<h2>Volunteer Task List</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Location</th>
+        <th>Skills</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.title}"></td>
+        <td th:text="${task.description}"></td>
+        <td th:text="${task.location}"></td>
+        <td th:text="${task.skills}"></td>
+        <td th:text="${task.date}"></td>
+        <td th:text="${task.time}"></td>
+        <td>
+            <a th:href="@{'/tasks/edit/' + ${task.id}}" class="btn btn-edit">Edit</a>
+            <a th:href="@{'/tasks/delete/' + ${task.id}}" class="btn btn-delete"
+               onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Tasks</title>
+    <style>
+        .btn { padding: 4px 8px; margin: 2px; border-radius: 6px; }
+        .btn-edit { background-color: orange; color: white; }
+        .btn-delete { background-color: red; color: white; }
+    </style>
+</head>
+<body>
+<h2>All Tasks</h2>
+<a href="/tasks/new">Create New Task</a>
+<table border="1">
+    <tr>
+        <th>Title</th><th>Description</th><th>Location</th><th>Skills</th><th>Date</th><th>Time</th><th>Action</th>
+    </tr>
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.title}"></td>
+        <td th:text="${task.description}"></td>
+        <td th:text="${task.location}"></td>
+        <td th:text="${task.skills}"></td>
+        <td th:text="${task.date}"></td>
+        <td th:text="${task.time}"></td>
+        <td>
+            <a th:href="@{'/tasks/edit/' + ${task.id}}" class="btn btn-edit">Edit</a>
+            <a th:href="@{'/tasks/delete/' + ${task.id}}" class="btn btn-delete">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+-->

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Edit Volunteer Profile</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f9;
+        padding: 20px;
+    }
+    .container {
+        background: white;
+        max-width: 500px;
+        margin: auto;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+    label {
+        display: block;
+        margin-top: 10px;
+        color: #444;
+    }
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        width: 100%;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+<h2>Volunteer Profile</h2>
+<form th:action="@{/save-volunteer-profile}" th:object="${profile}" method="post">
+  <input type="hidden" th:field="*{id}" />
+  <label>Phone:</label><input type="text" th:field="*{phone}" /><br/>
+  <label>Skills:</label><input type="text" th:field="*{skills}" /><br/>
+  <label>Address:</label><input type="text" th:field="*{address}" /><br/>
+  <button type="submit">Save / Update</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <title>Community Volunteering</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<header>
+    <div class="logo">Community <span>Volunteering</span></div>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/register}">User Registration</a></li>
+            <li><a th:href="@{/login}">Login</a></li>
+            <!--     <li><a th:href="@{/search}">Search & Filter</a></li>
+                 <li><a th:href="@{/signup}">SignUp</a></li>
+                 <li><a th:href="@{/rating}">Rating</a></li>
+                 <li><a th:href="@{/get-involved}" class="get-involved-btn">Get Involved</a></li>-->
+        </ul>
+    </nav>
+</header>
+
+<!-- Hero Section with Your Image -->
+
+<section class="hero">
+    <div class="hero-text" style="text-color:black" >
+        <h1>Join Our <span>Community</span> of Volunteers</h1>
+        <p >Welcome to Community Volunteering! We connect passionate individuals with meaningful opportunities to make a difference. Explore how you can contribute and be a part of our mission to create positive change.</p>
+    </div>
+    <div class="hero-bg">
+        <img src="/images/volunteer-image.png" alt="Volunteer Image" class="hero-img" width="70%" height="auto" >
+    </div>
+    <div class="hero-text">
+
+        <div class="hero-buttons">
+            <a th:href="@{/get-involved}" class="btn">Get Involved</a>
+            <a th:href="@{/learn-more}" class="btn secondary">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<!-- Expanded Info Section -->
+<section class="opportunities">
+    <h2>Explore Our Diverse Volunteer Opportunities</h2>
+    <p>
+        Join us in making a difference in your community. Our platform offers a wide range of volunteer tasks tailored to match your interests and skills. Whether you’re passionate about helping others, building your career experience, or simply giving back, there’s a place for you here.
+    </p>
+    <a th:href="@{/opportunities}" class="btn-purple">View All Opportunities</a>
+
+    <div class="opportunity-types">
+        <div>
+            <h3>Community Service</h3>
+            <p>Engage in meaningful tasks that benefit local communities and foster social responsibility. From tree planting to food drives, your time can create real change.</p>
+        </div>
+        <div>
+            <h3>Skill-Based Volunteering</h3>
+            <p>Use your unique skills to support nonprofit organizations in need — such as graphic design, teaching, writing, or technical support — and gain valuable experience.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-columns">
+        <div class="column">
+            <h4>Get Involved</h4>
+            <a th:href="@{/opportunities}">Volunteer Opportunities</a><br>
+            <a th:href="@{/register}">Register</a>
+        </div>
+        <div class="column">
+            <h4>Grab a Task</h4>
+            <a th:href="@{/signup}">SignUp</a>
+        </div>
+        <div class="column">
+            <h4>Support Us</h4>
+            <a th:href="@{/rating}">Rate your Volunteer</a>
+        </div>
+        <div class="column">
+            <h4>Stay Updated</h4>
+            <form>
+                <input type="email" placeholder="Enter your email">
+                <button type="submit" class="btn-purple">Subscribe</button>
+            </form>
+        </div>
+    </div>
+    <p class="footer-bottom">
+        Community Volunteering is dedicated to connecting volunteers with meaningful opportunities to make a difference. Join us in our mission to support and uplift communities through dedicated service and collaboration.
+    </p>
+    <div class="footer-links">
+        <a href="#">Terms Of Service</a> | <a href="#">Privacy Policy</a>
+    </div>
+</footer>
+
+</body>
+</html>

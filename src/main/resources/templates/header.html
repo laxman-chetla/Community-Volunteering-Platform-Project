@@ -1,0 +1,18 @@
+<!-- fragments/header.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:fragment="header">
+  <nav>
+    <ul>
+      <li><a th:href="@{/tasks}" target="_blank">Volunteer Opportunities</a></li>
+      <li><a th:href="@{/tasks/search-filter}" target="_blank">Search & Filter</a></li>
+      <li><a th:href="@{/signup/register}" target="_blank">SignUp</a></li>
+      <li><a th:href="@{/ratings/new}" target="_blank">Rate A Volunteer</a></li>
+      <li><a th:href="@{/signup/register}" class="get-involved-btn" target="_blank">Get Involved</a></li>
+      <li><a th:href="@{/profile}" class="get-involved-btn" target="_blank">Profile</a></li>
+    </ul>
+  </nav>
+</header>
+</body>
+</html>

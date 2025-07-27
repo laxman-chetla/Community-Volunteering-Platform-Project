@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rate Volunteer</title>
+    <style>
+        .star-rating {
+            direction: rtl;
+            display: inline-block;
+        }
+        .star-rating input {
+            display: none;
+        }
+        .star-rating label {
+            font-size: 2rem;
+            color: gray;
+            cursor: pointer;
+        }
+        .star-rating input:checked ~ label {
+            color: gold;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .btn {
+            padding: 6px 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .insert-btn {
+    background-color: #007bff;
+    color: white;
+}
+    </style>
+</head>
+<body>
+<a th:href="@{'/ratings/view'}" class="btn insert-btn">View Ratings</a>
+<div class="form-container">
+    <h2>Rate a Volunteer</h2>
+    <form th:action="@{/ratings/save}" method="post" th:object="${rating}">
+        <input type="hidden" th:field="*{id}" />
+        <label>Volunteer Name:</label>
+        <input type="text" th:field="*{volunteerName}" required /><br><br>
+
+        <label>Organization Name:</label>
+        <input type="text" th:field="*{organizationName}" required /><br><br>
+
+        <label>Stars:</label>
+        <div class="star-rating">
+            <input type="radio" th:field="*{stars}" value="5" id="star5"><label for="star5">&#9733;</label>
+            <input type="radio" th:field="*{stars}" value="4" id="star4"><label for="star4">&#9733;</label>
+            <input type="radio" th:field="*{stars}" value="3" id="star3"><label for="star3">&#9733;</label>
+            <input type="radio" th:field="*{stars}" value="2" id="star2"><label for="star2">&#9733;</label>
+            <input type="radio" th:field="*{stars}" value="1" id="star1"><label for="star1">&#9733;</label>
+        </div><br><br>
+
+        <label>Comment (optional):</label><br>
+        <textarea th:field="*{comment}" rows="3" cols="40"></textarea><br><br>
+
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
+</body>
+</html>

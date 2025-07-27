@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home Page</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a th:href="@{/index}">index</a>
+    <h2>Welcome to the Community Volunteering Platform!</h2>
+    <a th:href="@{/logout}">Logout</a>
+    <a th:href="@{/delete-account}">Delete Account</a>
+</div>
+
+<!--
+<form th:action="@{/index}" method="post">
+    <button type="submit" class="btn btn-danger">index</button>
+</form>
+<a th:href="@{/profile}" class="btn">My Profile</a>-->
+<a href="/profile" class="btn">Profile</a>
+
+</body>
+</html>

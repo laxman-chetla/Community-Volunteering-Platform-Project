@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ratings</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        .btn {
+            padding: 5px 12px;
+            margin: 2px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .edit-btn {
+            background-color: orange;
+        }
+        .delete-btn {
+            background-color: red;
+        }
+        .insert-btn {
+    background-color: #007bff;
+    color: white;
+}
+        .top10-box {
+            background-color: #e8f0fe;
+            padding: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+<h2>Top 10 Volunteers</h2>
+<div class="top10-box">
+    <ul>
+        <li th:each="entry : ${top10}" th:text="${entry[0]} + ' - ⭐ ' + ${entry[1]}"></li>
+    </ul>
+</div>
+
+<h2>All Ratings</h2>
+<a th:href="@{'/ratings/new'}" class="btn insert-btn">Rate a Volunteer</a>
+<table>
+    <thead>
+    <tr>
+        <th>Volunteer</th>
+        <th>Organization</th>
+        <th>Stars</th>
+        <th>Comment</th>
+        <th>Date</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="r : ${ratings}">
+        <td th:text="${r.volunteerName}"></td>
+        <td th:text="${r.organizationName}"></td>
+        <td th:text="${r.stars}"></td>
+        <td th:text="${r.comment}"></td>
+        <td th:text="${r.date}"></td>
+        <td>
+            <a th:href="@{'/ratings/edit/' + ${r.id}}" class="btn edit-btn">Edit</a>
+            <a th:href="@{'/ratings/delete/' + ${r.id}}" class="btn delete-btn">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
